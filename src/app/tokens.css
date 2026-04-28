@@ -1,0 +1,330 @@
+/* ==========================================================================
+   FOLIO DESIGN TOKENS
+   Newspaper-inspired design system
+   ========================================================================== */
+
+/* ==========================================================================
+   TYPOGRAPHY TOKENS
+   ========================================================================== */
+:root {
+  /* Font Families */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'IBM Plex Mono', 'Courier New', monospace;
+  --font-ui: 'IBM Plex Mono', monospace;
+
+  /* Type Scale - Fluid using clamp() */
+  --text-masthead: clamp(2rem, 5vw, 3.5rem);
+  --text-headline: clamp(1.25rem, 3vw, 2rem);
+  --text-subhead: clamp(1rem, 2vw, 1.25rem);
+  --text-byline: 0.75rem;
+  --text-body: 0.9rem;
+  --text-caption: 0.75rem;
+
+  /* Line Heights */
+  --leading-masthead: 1.1;
+  --leading-headline: 1.2;
+  --leading-subhead: 1.4;
+  --leading-byline: 1.6;
+  --leading-body: 1.7;
+  --leading-caption: 1.5;
+
+  /* Letter Spacing */
+  --tracking-masthead: -0.02em;
+  --tracking-headline: -0.01em;
+  --tracking-byline: 0.08em;
+  --tracking-body: 0;
+  --tracking-uppercase: 0.1em;
+}
+
+/* ==========================================================================
+   COLOR TOKENS - LIGHT MODE (PAPER)
+   ========================================================================== */
+:root {
+  --bg: #F2EDE3;
+  --ink-1: #1A1A1A;
+  --ink-2: #3D3D3D;
+  --ink-3: #6B6760;
+  --ink-4: #A09D98;
+  --rule: #C8C3BB;
+  --surface: #EDE8DE;
+  --accent-red: #7A1A1A;
+  --accent-green: #1A4A2E;
+  --accent-sepia: #6B5A3E;
+
+  /* Legacy aliases for gradual migration */
+  --ink-primary: var(--ink-1);
+  --ink-secondary: var(--ink-2);
+  --ink-tertiary: var(--ink-3);
+  --ink-faint: var(--ink-4);
+  --paper-primary: var(--bg);
+  --paper-secondary: var(--surface);
+  --paper-tertiary: var(--surface);
+  --paper-ruled: var(--rule);
+  --border-default: var(--rule);
+  --surface-card: var(--surface);
+  --surface-elevated: var(--surface);
+  --border-subtle: var(--rule);
+  --spark-color: #000000;
+}
+
+/* ==========================================================================
+   COLOR TOKENS - DARK MODE (ARCHIVE)
+   ========================================================================== */
+[data-theme="dark"] {
+  --bg: #0D0D0D;
+  --ink-1: #F5F0E8;
+  --ink-2: #D1CCC4;
+  --ink-3: #8A8680;
+  --ink-4: #4A4743;
+  --rule: #2A2824;
+  --surface: #1A1A1A;
+  --accent-red: #E74C3C;
+  --accent-green: #2ECC71;
+  --accent-sepia: #B8A882;
+
+  /* Legacy aliases */
+  --ink-primary: var(--ink-1);
+  --ink-secondary: var(--ink-2);
+  --ink-tertiary: var(--ink-3);
+  --ink-faint: var(--ink-4);
+  --paper-primary: var(--bg);
+  --paper-secondary: var(--surface);
+  --paper-tertiary: var(--surface);
+  --paper-ruled: var(--rule);
+  --border-default: var(--rule);
+  --surface-card: var(--surface);
+  --surface-elevated: var(--surface);
+  --border-subtle: var(--rule);
+  --spark-color: #ffffff;
+}
+
+/* ==========================================================================
+   SPACING SCALE (8pt grid)
+   ========================================================================== */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Semantic spacing */
+  --spacing-card-padding: var(--space-4);
+  --spacing-section-gap: var(--space-6);
+  --spacing-page-margin: var(--space-5);
+  --spacing-header-height: 64px;
+  --spacing-nav-height: 56px;
+}
+
+/* ==========================================================================
+   ANIMATION TOKENS
+   ========================================================================== */
+:root {
+  /* Easing Curves - Physical, mechanical animations */
+  --ease-press:   cubic-bezier(0.0, 0.0, 0.2, 1);    /* snappy, mechanical */
+  --ease-release: cubic-bezier(0.4, 0.0, 1.0, 1);    /* quick release */
+  --ease-unfold:  cubic-bezier(0.4, 0.0, 0.2, 1);    /* page turning */
+  --ease-stamp:   cubic-bezier(0.34, 1.4, 0.64, 1);  /* stamp overshoot */
+  --ease-ink:     cubic-bezier(0.25, 0.1, 0.25, 1);  /* ink settling */
+
+  /* Durations - All animations under 600ms except ink blot */
+  --dur-snap:   80ms;    /* typewriter key, checkbox, button press */
+  --dur-fast:   150ms;   /* hover states, focus rings */
+  --dur-base:   250ms;   /* most transitions */
+  --dur-slow:   450ms;   /* page entrances, section reveals */
+  --dur-type:   38ms;    /* per character typewriter speed */
+  --dur-ink:    520ms;   /* dark mode ink blot */
+
+  /* Animation tokens for Framer Motion */
+  --transition-snap: var(--dur-snap) var(--ease-press);
+  --transition-fast: var(--dur-fast) var(--ease-ink);
+  --transition-base: var(--dur-base) var(--ease-ink);
+  --transition-slow: var(--dur-slow) var(--ease-unfold);
+}
+
+/* ==========================================================================
+   LAYOUT TOKENS
+   ========================================================================== */
+:root {
+  /* Column Layout */
+  --column-count: 3;
+  --column-gap: var(--space-6);
+  --column-rule: 1px solid var(--rule);
+
+  /* Breakpoints (for reference - use Tailwind in components) */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* Max Content Width */
+  --max-content-width: 1100px;
+  --max-reading-width: 65ch;
+}
+
+/* ==========================================================================
+   COMPONENT TOKENS
+   ========================================================================== */
+:root {
+  /* Border Width */
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+
+  /* Border Radius - Minimal (newspaper has hard corners) */
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-stamp: 0;
+
+  /* Focus Ring */
+  --focus-ring: 2px dashed var(--ink-1);
+  --focus-offset: 3px;
+
+  /* Z-Index Scale */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+  --z-texture: 0;
+}
+
+/* ==========================================================================
+   STAMP/BADGE TOKENS
+   ========================================================================== */
+:root {
+  /* Stamp rotation variance */
+  --stamp-rotation-min: -2deg;
+  --stamp-rotation-max: 2deg;
+
+  /* Stamp animation */
+  --stamp-scale: 1.4;
+  --stamp-final-scale: 1;
+  --stamp-border-opacity: 0.85;
+}
+
+/* ==========================================================================
+   PROGRESS RING TOKENS
+   ========================================================================== */
+:root {
+  /* Ring dimensions */
+  --ring-stroke-width: 2px;
+  --ring-size-sm: 32px;
+  --ring-size-md: 44px;
+  --ring-size-lg: 80px;
+
+  /* Ring colors */
+  --ring-track: var(--rule);
+  --ring-progress: var(--ink-1);
+  --ring-complete: var(--accent-green);
+}
+
+/* ==========================================================================
+   TYPOGRAPHY CLASSES (utilities)
+   ========================================================================== */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-ui {
+  font-family: var(--font-ui);
+}
+
+.text-masthead {
+  font-family: var(--font-display);
+  font-size: var(--text-masthead);
+  line-height: var(--leading-masthead);
+  letter-spacing: var(--tracking-masthead);
+}
+
+.text-headline {
+  font-family: var(--font-display);
+  font-size: var(--text-headline);
+  line-height: var(--leading-headline);
+  letter-spacing: var(--tracking-headline);
+}
+
+.text-subhead {
+  font-family: var(--font-display);
+  font-size: var(--text-subhead);
+  line-height: var(--leading-subhead);
+}
+
+.text-byline {
+  font-family: var(--font-body);
+  font-size: var(--text-byline);
+  line-height: var(--leading-byline);
+  letter-spacing: var(--tracking-byline);
+  text-transform: uppercase;
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  max-width: var(--max-reading-width);
+}
+
+.text-caption {
+  font-family: var(--font-ui);
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+}
+
+/* Tabular numbers for counters */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+/* Newspaper-style borders */
+.border-newspaper {
+  border: var(--border-width-thin) solid var(--rule);
+}
+
+.border-newspaper-thick {
+  border: var(--border-width-medium) solid var(--rule);
+}
+
+.border-newspaper-double {
+  border-top: var(--border-width-thick) solid var(--rule);
+  border-bottom: var(--border-width-thin) solid var(--rule);
+}
+
+/* Ruled line for content rows */
+.ruled-line {
+  border-bottom: var(--border-width-thin) solid var(--rule);
+}
+
+/* No border radius - newspaper hard corners */
+.no-radius {
+  border-radius: var(--radius-none);
+}
+
+/* Stamp effect */
+.stamp-effect {
+  transform: rotate(var(--stamp-rotation, 0deg));
+  border: var(--border-width-thick) solid currentColor;
+  border-radius: var(--radius-stamp);
+  opacity: var(--stamp-border-opacity);
+}
+
+/* Focus styles */
+.focus-ink {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
