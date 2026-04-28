@@ -40,7 +40,6 @@
 - [ ] Review and update other vulnerable packages
 
 ### Production Setup
-- [ ] Set NEXT_PUBLIC_SITE_URL environment variable in Vercel
 - [ ] Configure Supabase production environment
 - [ ] Set up custom domain (if needed)
 - [ ] Configure analytics (if needed)
@@ -51,7 +50,6 @@
 # Required for Vercel
 NEXT_PUBLIC_SUPABASE_URL=your-production-supabase-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-production-anon-key
-NEXT_PUBLIC_SITE_URL=https://your-domain.vercel.app
 
 # Optional
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
@@ -73,7 +71,6 @@ SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 
 3. **Configure Environment Variables**
    - Add all required environment variables
-   - Set NEXT_PUBLIC_SITE_URL
 
 4. **Deploy**
    - Trigger deployment
